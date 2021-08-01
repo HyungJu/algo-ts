@@ -32,3 +32,5 @@ export function dijkstra(start: number, graph: Graph) {
 
   console.log(d);
 }
+
+//우선순위 큐에서 꺼낼때 왜 방문 여부를 확인 안해도 될까 ??
