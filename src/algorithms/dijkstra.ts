@@ -11,10 +11,8 @@ export function dijkstra(start: number, graph: Graph) {
     if (i != start) d[i] = Infinity;
     else d[i] = 0;
   }
-  console.log(d);
   let currentNode: number = start;
 
-  let count = 0;
   while (true) {
     for (const edge of graph.get(currentNode)) {
       if (d[edge.v] > d[currentNode] + edge.w) {
@@ -24,22 +22,14 @@ export function dijkstra(start: number, graph: Graph) {
           key: edge.v,
           value: d[currentNode] + edge.w,
         });
-        console.log('HEAP ADD', heap);
       }
     }
     visited[currentNode] = true;
 
     const shortest = heap.remove();
-    console.log('HEAP ', heap);
-    console.log('HEAP CNT', heap.arr.length);
-    console.log('SHORTEST', shortest);
-    console.log(typeof shortest);
     if (shortest == false) break;
 
     currentNode = (shortest as HeapPayload).key;
-    console.log('\nCount:', count);
-    if (count == 6) break;
-    count++;
   }
 
   console.log(d);
